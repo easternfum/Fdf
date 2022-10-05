@@ -12,9 +12,9 @@
 
 #ifndef FDF_H
 # define FDF_H
+
 # define WIDTH 1500
 # define HEIGHT 1000
-
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
