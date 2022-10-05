@@ -34,7 +34,7 @@ all : $(NAME)
 .SILENT : $(OBJS)
 
 libft/libft.a :
-	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
+	@echo "$(GREEN)Compiling libft files...$(DEFAULT)"
 	@$(MAKE) -sC libft/ all
 	@echo "$(GREEN)Compiling $(NAME) files...$(DEFAULT)"
 
