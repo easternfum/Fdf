@@ -6,12 +6,15 @@
 /*   By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:57:08 by kfum              #+#    #+#             */
-/*   Updated: 2022/04/07 14:51:06 by kfum             ###   ########.fr       */
+/*   Updated: 2022/10/05 11:17:33 by kfum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
+/*
+** Set the graphic back to the original position
+*/
 static void	back_to_default(t_window *g_map)
 {
 	int	i;
@@ -34,10 +37,13 @@ static void	back_to_default(t_window *g_map)
 	}
 }
 
+/*
+** Key input setting part1
+*/
 static void	key_setting1(int key, t_window *g_map)
 {
 	if (key == 53)
-		error_msg("Exit success");
+		error_msg(EXIT);
 	if (key == 15)
 		g_map->color = 1;
 	if (key == 5)
@@ -61,6 +67,9 @@ static void	key_setting1(int key, t_window *g_map)
 		g_map->x_offset += 10;
 }
 
+/*
+** Key input setting part2
+*/
 static void	key_setting2(int key, t_window *g_map)
 {
 	if (key == 13)
@@ -87,6 +96,9 @@ static void	key_setting2(int key, t_window *g_map)
 		y_rotation(g_map, 0.099);
 }
 
+/*
+** Putting all the key settings into 1 function
+*/
 int	control(int key, t_window *g_map)
 {
 	key_setting1(key, g_map);

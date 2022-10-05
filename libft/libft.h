@@ -6,7 +6,7 @@
 /*   By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:48:33 by kfum              #+#    #+#             */
-/*   Updated: 2022/04/07 14:55:04 by kfum             ###   ########.fr       */
+/*   Updated: 2022/09/12 14:44:38 by kfum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,14 @@ int		ft_abs(int x);
 void	ft_strrev(char *str);
 void	ft_swap(void *v1, void *v2);
 int		ft_sqrt(int n);
+int		ft_count(char *s, char c);
+int		ft_search(char *s, int c);
+int		ft_map_check(char c);
 
 /*
 **************************GET NEXT LINE PART*************************************
 */
+
 int		get_next_line(const int fd, char **line);
 
 #endif

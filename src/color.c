@@ -6,12 +6,15 @@
 /*   By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:37:39 by kfum              #+#    #+#             */
-/*   Updated: 2022/04/06 16:28:50 by kfum             ###   ########.fr       */
+/*   Updated: 2022/04/07 16:13:12 by kfum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
+/*
+** Get different colors (R,G,B)
+*/
 void	init_color(t_window *g_map, int x, int y, int color)
 {
 	char	*graph;
@@ -27,6 +30,9 @@ void	init_color(t_window *g_map, int x, int y, int color)
 	}
 }
 
+/*
+** Fill the X line color
+*/
 static void	fill_color1(t_window *g_map, int i, int j)
 {
 	if ((g_map->init[i][j].z < g_map->init[i][j + 1].z)
@@ -43,6 +49,9 @@ static void	fill_color1(t_window *g_map, int i, int j)
 	}
 }
 
+/*
+** Fill the Y line color
+*/
 static void	fill_color2(t_window *g_map, int i, int j)
 {
 	if ((g_map->init[i][j].z < g_map->init[i + 1][j].z)
@@ -59,6 +68,9 @@ static void	fill_color2(t_window *g_map, int i, int j)
 	}
 }
 
+/*
+** Fill the X line with color then print out
+*/
 void	set_color1(t_window *g_map)
 {
 	int	i;
@@ -79,6 +91,9 @@ void	set_color1(t_window *g_map)
 	}
 }
 
+/*
+** Fill the Y line with color then print out
+*/
 void	set_color2(t_window *g_map)
 {
 	int	i;

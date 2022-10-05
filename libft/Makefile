@@ -6,7 +6,7 @@
 #    By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 11:01:05 by kfum              #+#    #+#              #
-#    Updated: 2022/04/05 15:41:21 by kfum             ###   ########.fr        #
+#    Updated: 2022/10/05 11:07:45 by kfum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ FILES = ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove \
 		ft_putendl_fd ft_putnbr_fd ft_lstnew ft_lstdelone ft_lstdel \
 		ft_lstadd ft_lstiter ft_lstmap ft_lstcount ft_lstrev \
 		ft_isspace ft_abs ft_strrev ft_swap ft_sqrt \
-		get_next_line
+		get_next_line ft_count ft_search ft_map_check
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
@@ -37,20 +37,30 @@ SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 OBJS_DIR = ./
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+
+.c.o: $(SRCS)	
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@echo -n '.'
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	@$(AR) $@ $^
+	@echo "$(GREEN)\nLibft compilation done.\n$(DEFAULT)"
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	@echo "$(RED)Cleaning libft .o files...$(DEFAULT)"
+	@$(RM) $(OBJS)
+	@echo "$(GREEN)DONE.\n$(DEFAULT)"
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "$(RED)Deleting $(NAME)...$(DEFAULT)" 
+	@$(RM) $(NAME)
+	@echo "$(GREEN)DONE.\n$(DEFAULT)"
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean fclean re
+# Output colors
+DEFAULT	:=\033[0m
+GREEN	:=\033[0;32m
+RED		:=\033[0;31m

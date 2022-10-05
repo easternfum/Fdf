@@ -6,12 +6,15 @@
 /*   By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:45:40 by kfum              #+#    #+#             */
-/*   Updated: 2022/04/06 12:56:07 by kfum             ###   ########.fr       */
+/*   Updated: 2022/04/07 16:13:16 by kfum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
+/*
+** Rounded up the number
+*/
 static int	rounded_up(float number)
 {
 	int		i;
@@ -33,6 +36,9 @@ static int	rounded_up(float number)
 	return ((int)((i + 1) * flag));
 }
 
+/*
+** Calculation for the isometric projection
+*/
 static t_point	i_projection(t_point p, t_window *g_map)
 {
 	t_point	new_point;
@@ -48,6 +54,9 @@ static t_point	i_projection(t_point p, t_window *g_map)
 	return (new_point);
 }
 
+/*
+** Calculation for the cabinet projection
+*/
 static t_point	c_projection(t_point p, t_window *g_map)
 {
 	t_point	new_point;
@@ -63,6 +72,9 @@ static t_point	c_projection(t_point p, t_window *g_map)
 	return (new_point);
 }
 
+/*
+** Calculation for the plan projection
+*/
 static t_point	p_projection(t_point p, t_window *g_map)
 {
 	t_point	new_point;
@@ -79,6 +91,9 @@ static t_point	p_projection(t_point p, t_window *g_map)
 	return (new_point);
 }
 
+/*
+** Function that allow to change projection
+*/
 void	change_projection(t_window *g_map)
 {
 	int		i;

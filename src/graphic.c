@@ -6,12 +6,15 @@
 /*   By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:18:26 by kfum              #+#    #+#             */
-/*   Updated: 2022/04/07 14:52:18 by kfum             ###   ########.fr       */
+/*   Updated: 2022/04/07 16:13:15 by kfum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
+/*
+** Initialize the graphic output
+*/
 void	init_graph(t_window *g_map)
 {
 	g_map->zoom = 30;
@@ -22,6 +25,9 @@ void	init_graph(t_window *g_map)
 	g_map->color = 0;
 }
 
+/*
+** Part of printing out graphic function
+*/
 static t_window	*check_value(t_window *g_map)
 {
 	g_map->line.dx = fabs(g_map->point2.x - g_map->point1.x);
@@ -38,6 +44,9 @@ static t_window	*check_value(t_window *g_map)
 	return (g_map);
 }
 
+/*
+**	Print out the graphic
+*/
 void	print_graph(t_window *g_map)
 {
 	check_value(g_map);
@@ -59,6 +68,9 @@ void	print_graph(t_window *g_map)
 	}
 }
 
+/*
+** Clear the graphic from structure
+*/
 static void	clean_graph(t_window *g_map)
 {
 	char	*graph;
@@ -68,6 +80,9 @@ static void	clean_graph(t_window *g_map)
 	ft_bzero(graph, 4 * WIDTH * HEIGHT);
 }
 
+/*
+** Put all the print out functions into 1
+*/
 int	all_in(t_window *g_map)
 {
 	clean_graph(g_map);

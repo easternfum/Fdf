@@ -12,7 +12,10 @@
 
 #include "../include/fdf.h"
 
-int	**create_matrix(char **fdf, t_window *g_map)
+/*
+** Getting the number from file and insert to structure
+*/
+int	**get_value(char **graph, t_window *g_map)
 {
 	int		i;
 	int		j;
@@ -26,7 +29,7 @@ int	**create_matrix(char **fdf, t_window *g_map)
 	{
 		j = -1;
 		len = 0;
-		split = ft_strsplit(fdf[i], ' ');
+		split = ft_strsplit(graph[i], ' ');
 		while (split[len])
 			len++;
 		array[i] = (int *)malloc(sizeof(int) * len);
@@ -38,6 +41,9 @@ int	**create_matrix(char **fdf, t_window *g_map)
 	return (array);
 }
 
+/*
+** Getting the X & Y and putting it to structure
+*/
 static void	create_points(t_window *g_map)
 {
 	int		i;
@@ -59,6 +65,9 @@ static void	create_points(t_window *g_map)
 	}
 }
 
+/*
+** Putting all the input to struct then create a pop up window
+*/
 void	create_window(t_window *g_map)
 {
 	int	i;
@@ -77,44 +86,50 @@ void	create_window(t_window *g_map)
 	create_points(g_map);
 	change_projection(g_map);
 	g_map->mlx = mlx_init();
-	g_map->window = mlx_new_window(g_map->mlx, WIDTH, HEIGHT, "fdf");
+	g_map->window = mlx_new_window(g_map->mlx, WIDTH, HEIGHT, FDF);
 	g_map->graphic = mlx_new_image(g_map->mlx, WIDTH, HEIGHT);
 	mlx_hook(g_map->window, 2, 3, control, g_map);
 	mlx_loop_hook(g_map->mlx, &all_in, g_map);
 	mlx_loop(g_map->mlx);
 }
 
+/*
+** Instruction for the controls that show on screen Part1
+*/
 void	control_instruction1(t_window *g_map)
 {
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 190, 0x00FFFFFF,
-		"W/A/S/D - move graphic");
+		MOVE);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 180, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 170, 0x00FFFFFF,
-		"-/+ - zoom in & out");
+		ZOOM);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 160, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 150, 0x00FFFFFF,
-		"R/G/B/M: - change colors");
+		COLOR);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 140, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 130, 0x00FFFFFF,
-		"Q - back to default");
+		DEFAULT);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 120, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 110, 0x00FFFFFF,
-		"Z/X/C - change projection");
+		PRO);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 100, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 90, 0x00FFFFFF,
-		"Arrow up/Arrow down - X axis rotation");
+		X_AXIS);
 }
 
+/*
+** Instruction for the controls that show on screen Part2
+*/
 void	control_instruction2(t_window *g_map)
 {
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 80, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 70, 0x00FFFFFF,
-		"Arrow left/Arrow right - Y axis rotation");
+		Y_AXIS);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 60, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 50, 0x00FFFFFF,
-		"</> - Z axis rotation");
+		Z_AXIS);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 40, 0x00FFFFFF, "");
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 30, 0x00FFFFFF,
-		"ESC - exit window");
+		ESC);
 	mlx_string_put(g_map->mlx, g_map->window, 20, HEIGHT - 20, 0x00FFFFFF, "");
 }

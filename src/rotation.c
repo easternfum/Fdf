@@ -6,12 +6,15 @@
 /*   By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:44:27 by kfum              #+#    #+#             */
-/*   Updated: 2022/04/06 12:56:19 by kfum             ###   ########.fr       */
+/*   Updated: 2022/04/07 16:13:17 by kfum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
+/*
+** Getting the X rotation
+*/
 void	x_rotation(t_window *g_map, float angle)
 {
 	int		i;
@@ -30,6 +33,9 @@ void	x_rotation(t_window *g_map, float angle)
 	}
 }
 
+/*
+** Getting the Y rotation
+*/
 void	y_rotation(t_window *g_map, float angle)
 {
 	int		i;
@@ -48,6 +54,9 @@ void	y_rotation(t_window *g_map, float angle)
 	}
 }
 
+/*
+** Getting the Z rotation
+*/
 void	z_rotation(t_window *g_map, float angle)
 {
 	int		i;

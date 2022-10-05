@@ -6,7 +6,7 @@
 /*   By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:43:52 by kfum              #+#    #+#             */
-/*   Updated: 2022/04/07 15:06:50 by kfum             ###   ########.fr       */
+/*   Updated: 2022/10/05 11:16:07 by kfum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 # define FDF_H
 # define WIDTH 1500
 # define HEIGHT 1000
-# define GL_SILENCE_DEPRECATION
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
 # include <mlx.h>
 # include "../libft/libft.h"
+# include "msg.h"
 
 typedef struct s_point
 {
@@ -78,7 +77,7 @@ void	change_projection(t_window *g_map);
 void	x_rotation(t_window *g_map, float angle);
 void	y_rotation(t_window *g_map, float angle);
 void	z_rotation(t_window *g_map, float angle);
-int		**create_matrix(char **fdf, t_window *g_map);
+int		**get_value(char **graph, t_window *g_map);
 void	create_window(t_window *g_map);
 void	control_instruction1(t_window *g_map);
 void	control_instruction2(t_window *g_map);

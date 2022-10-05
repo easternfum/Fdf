@@ -6,7 +6,7 @@
 #    By: kfum <kfum@student.hive.fi>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 09:39:56 by kfum              #+#    #+#              #
-#    Updated: 2022/03/29 09:39:56 by kfum             ###   ########.fr        #
+#    Updated: 2022/04/07 16:13:13 by kfum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 MINILIB = -I /usr/local/include -L /usr/local/lib -l mlx -l ft -framework OpenGL -framework Appkit
 INC_LIB = -Llibft
-CPPFLAGS = -I./ -I./libft
 
 # Files to compile
 FILES = angle color control fdf graphic projection rotation window
@@ -29,37 +28,33 @@ FILES = angle color control fdf graphic projection rotation window
 # Files
 SRCS = $(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(SRC_PATH), $(addsuffix .o, $(FILES)))
-INC = $(addprefix -I, $(INC_DIR))
 LIB_MLX = libft/libft.a
 
 all : $(NAME)
+.SILENT : $(OBJS)
 
 libft/libft.a :
 	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
-	make -C libft/ all
-	@echo "$(GREEN)Compilation done.\n$(DEFAULT)"
-	@echo "$(GREEN)Compiling fdf...$(DEFAULT)"
+	@$(MAKE) -sC libft/ all
+	@echo "$(GREEN)Compiling $(NAME) files...$(DEFAULT)"
 
 $(NAME) : $(LIB_MLX) $(OBJS)
-	$(CC) $^ -o $@ $(FLAGS) $(INC_LIB) $(MINILIB)
-	@echo "$(GREEN)Compilation done.$(DEFAULT)"
+	@echo -n '.'
+	@$(CC) $^ -o $@ $(FLAGS) $(INC_LIB) $(MINILIB)
+	@echo "$(GREEN)\n$(NAME) compilation done.$(DEFAULT)"
 
 clean :
-	@echo "$(RED)Cleaning libft .o and .a files...$(DEFAULT)"
-	make fclean -C libft
-	@echo "$(GREEN)DONE.\n$(DEFAULT)"
+	@$(MAKE) fclean -sC libft
 	@echo "$(RED)Cleaning $(NAME) .o files...$(DEFAULT)"
-	rm -f $(OBJS)
-	@echo "$(GREEN)DONE.$(DEFAULT)"
+	@rm -f $(OBJS)
+	@echo "$(GREEN)DONE.\n$(DEFAULT)"
 
 fclean : clean
-	@echo "$(RED)Deleting .fdf...$(DEFAULT)" 
-	rm -f $(NAME)
-	@echo "$(GREEN)DONE.$(DEFAULT)"
+	@echo "$(RED)Deleting .$(NAME)...$(DEFAULT)" 
+	@rm -f $(NAME)
+	@echo "$(GREEN)DONE.\n$(DEFAULT)"
 
 re : fclean all
-
-.PHONY: all clean fclean re
 
 # Output colors
 DEFAULT	:=\033[0m
